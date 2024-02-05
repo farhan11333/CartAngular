@@ -1,0 +1,25 @@
+<!-- cart-item.component.html -->
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img src="{{ cartItem.img }}" alt="{{ cartItem.name }}" class="img-fluid rounded-start" width="100">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">{{ cartItem.name }}</h5>
+          <p class="card-text">Price: ${{ cartItem.price }}</p>
+        </div>
+      </div>
+      <div class="col-md-2 mt-2">
+        <div class="d-flex flex-column align-items-end">
+          <div class="cart-item-qty mb-2">
+            <button class="btn btn-outline-primary btn-sm"  (click)="handleMinusClick()">-</button>
+            <span class="mx-2">{{ cartItem.quantity }}</span>
+            <button class="btn btn-outline-primary btn-sm" (click)="handlePlusClick()">+</button>
+          </div>
+          <button class="btn btn-danger btn-sm" (click)="handleDeleteItem()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

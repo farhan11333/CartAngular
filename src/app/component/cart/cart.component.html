@@ -1,0 +1,51 @@
+<ng-container *ngIf="products.length !=0">
+  <!-- cart.component.html -->
+<div class="container mt-2">
+    <div class="row mb-2">
+      <div class="col-sm-2">
+        <select class="form-select"  (change)="onFilterChange($event)">
+          <option value="">All</option>
+          <option value="Stone">Stone</option>
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+        </select>
+      </div>
+    </div>
+  
+    <div *ngFor="let cartItem of cartItems" class="mb-3">
+      <app-cartitems
+        [cartItem]="cartItem"
+        (minusClick)="handleMinusClick(cartItem)"
+        (plusClick)="handlePlusClick(cartItem)"
+        (deleteItem)="handleDeleteItem(cartItem)"
+      ></app-cartitems>
+    </div>
+    <div *ngIf="filter!='' && cartItems.length==0" class="mb-3">
+        <div class="alert alert-danger" role="alert" style="width: 100%; text-center">
+            No matching Item found
+        </div>
+      </div>
+  
+    <div class="row text-end" style="margin-right: 14%">
+      <div class="col">
+        <h3>Total: {{ grandTotal }}</h3>
+      </div>
+    </div>
+  </div>
+  
+</ng-container>
+
+
+<ng-container *ngIf="products.length ==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+        <div class="center">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
